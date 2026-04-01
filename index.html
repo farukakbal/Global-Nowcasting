@@ -9,7 +9,7 @@ body{background:#f8f9fa;} .hdr{text-align:center;padding:14px 0 6px;} .hdr h1{co
 .cl{text-align:center;margin-top:5px;font-size:0.82em;color:#555;}
 .fbtn{padding:5px 14px;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:12px;margin:2px;} .fbtn.on{background:#2a5c7f;color:#fff;border-color:#2a5c7f;}
 </style></head><body><div class="container-fluid">
-<div class="hdr"><h1>Global Nowcasting Dashboard</h1><p>Akbal and Giannone (2026) &mdash; Nowcasting Low-Income Countries Through Global Linkages</p></div>
+<div class="hdr"><h1>Global Nowcasting Dashboard</h1><p style="font-size:0.72em;">Based on Akbal and Giannone (2026) &mdash; Nowcasting Low-Income Countries Through Global Linkages &nbsp;|&nbsp; Last updated: April 01, 2026</p></div>
 <div class="tabs">
 <div class="tb on" onclick="sw('est',this)">Country Estimates</div>
 <div class="tb" onclick="sw('agg',this)">Aggregate Estimates</div>
@@ -50,7 +50,7 @@ body{background:#f8f9fa;} .hdr{text-align:center;padding:14px 0 6px;} .hdr h1{co
 <h6 class="text-center mt-1" style="color:#7d3c98;">Counterfactual Exercises</h6>
 <div id="m4" style="height:450px"></div><div class="nt">R² between actual quarterly data and counterfactual estimate (quarterly data removed from estimation).</div>
 <div class="cd" id="c4">Select a country</div>
-<div class="row"><div class="col-md-6"><div id="qs" style="height:390px"></div><div class="cl">Standard Estimate</div></div><div class="col-md-6"><div id="qp" style="height:390px"></div><div class="cl">Placebo Estimate (quarterly removed)</div></div></div>
+<div class="row"><div class="col-md-6"><div id="qs" style="height:390px"></div><div class="cl">Standard Estimate</div></div><div class="col-md-6"><div id="qp" style="height:390px"></div><div class="cl">Counterfactual Estimate (quarterly removed)</div></div></div>
 </div>
 
 <!-- TAB 4: EXPLAINED VARIANCE -->
@@ -169,7 +169,7 @@ const bl=new Blob([csv.join('\n')],{type:'text/csv'});l.href=URL.createObjectURL
 }
 
 // ===== TAB 3: PLACEBO =====
-function lp(c,n){document.getElementById('c4').textContent='Placebo: '+n;const d=PD[String(c)];if(!d)return;
+function lp(c,n){document.getElementById('c4').textContent='Counterfactual: '+n;const d=PD[String(c)];if(!d)return;
 if(d.q)rc('qs',d.q,'quarterly');else Plotly.purge('qs');
 if(d.p&&d.q){const pd={t:d.p.t,d:d.q.d,e:d.p.pe,g:d.p.pg,r:d.p.pr,i:d.p.pi,a:d.p.pa};rc('qp',pd,'quarterly');}else Plotly.purge('qp');}
 
